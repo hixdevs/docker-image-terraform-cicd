@@ -1,10 +1,21 @@
-# Terraform CI&CD Docker Image
+# Kubeval
 
-A stable debian with:
+`kubeval` is a tool for validating a Kubernetes YAML or JSON configuration file.
+It does so using schemas generated from the Kubernetes OpenAPI specification, and
+therefore can validate schemas for multiple versions of Kubernetes.
 
-- [terraform](https://terraform.io)
-- [tfsec](https://aquasecurity.github.io/tfsec/)
-- [tflint](https://github.com/terraform-linters/tflint)
-- [git-crypt](https://github.com/AGWA/git-crypt)
+[![CircleCI](https://circleci.com/gh/instrumenta/kubeval.svg?style=svg)](https://circleci.com/gh/instrumenta/kubeval)
+[![Go Report
+Card](https://goreportcard.com/badge/github.com/instrumenta/kubeval)](https://goreportcard.com/report/github.com/instrumenta/kubeval)
+[![GoDoc](https://godoc.org/github.com/instrumenta/kubeval?status.svg)](https://godoc.org/github.com/instrumenta/kubeval)
 
-to be used in the CI&CD pipelines.
+
+```
+$ kubeval my-invalid-rc.yaml
+WARN - fixtures/my-invalid-rc.yaml contains an invalid ReplicationController - spec.replicas: Invalid type. Expected: [integer,null], given: string
+$ echo $?
+1
+```
+
+
+For full usage and installation instructions see [kubeval.com](https://kubeval.com/).
